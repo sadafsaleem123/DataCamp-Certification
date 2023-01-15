@@ -1,0 +1,134 @@
+1. From the movie_budget table, return the first five rows where the title doesn't contain the character a only in lowercase.
+SELECT *
+FROM movie_budget
+WHERE title NOT LIKE '%a%'
+LIMIT 5;
+
+2. To calculate the average price for each category from the fruit_2022 table, ensure that the calculation only includes the prices using kg as the unit.
+SELECT category, 
+       AVG(price) AS avg_price
+FROM fruit_2022
+WHERE unit = 'kg'
+GROUP BY category;
+
+3. From the movie_budget table, return the year with more than 3 movies in the table.
+SELECT year, COUNT(*) AS n_of_movies
+FROM movie_budget
+GROUP BY year
+HAVING COUNT(*) > 3;
+
+4. From the bike_stations table, convert the Station_ID column to INTEGER data type.
+SELECT station_id,
+SELECT Station_ID :: INT,
+       Latitude,
+       Longitude
+FROM bike_stations;
+
+5. From the speaker table, return the number of speakers per year in descending order.
+SELECT  EXTRACT(year FROM launch) AS year,
+        COUNT(*) AS number_of_speakers
+FROM speaker
+GROUP BY year
+ORDER BY number_of_speakers DESC;
+
+6. Based only on the preview shown, which column has missing values in the speaker table?
+-- speaker
+|   model                             | price |  launch     |  overall  |
+|-------------------------------------|-------|-------------|-----------|
+|   Bowers & Wilkins Formation Wedge  |  899  |  2019-06-01 |   160     |
+|   Harman Kardon Citation 200        |  349  |  ''         |   147     |
+|   Sonos Five                        |       |  2021-06-01 |    0 
+Answer: Price column
+
+7. In the vendors table, some entries in the zip_code have 9 digits. Return a zip_code column that only contains the first 5 digits from the zip_code column.
+SELECT vendor_name, 
+      LEFT(zip_code,5) AS zip_code
+FROM vendors;
+
+8. From the fruit_2022 table, you want to know which item in the vegetable category has an average price higher than 2.
+SELECT item,
+       AVG(price) AS avg_price
+FROM fruit_2022
+WHERE category = 'vegetable'
+GROUP BY item
+HAVING AVG(price) > 2;
+
+9. Add the rows from the movie_2010 table to movie_2000 but keep the duplicates.
+SELECT *
+FROM movie_2000
+UNION ALL 
+SELECT *
+FROM movie_2010
+ORDER BY year;
+
+10. Add the rows from the movie_2010 table to movie_2000 but remove the duplicates.
+SELECT *
+FROM movie_2000
+UNION 
+SELECT *
+FROM movie_2010
+ORDER BY year;
+
+11. For the vendors table, return the number of the rows without missing values in the vendor_state column. 
+SELECT COUNT(*) 
+FROM vendors
+WHERE  vendor_state IS NOT NULL ;
+
+
+12.
+SELECT item, 
+    CASE WHEN energy > 300 THEN 'high'
+    WHEN energy > 150 THEN 'medium'
+    ELSE 'low' END AS calorie_rating
+FROM food
+ORDER BY item;
+
+13. The wine_region table gives a list of all wines offered by a restaurant. The pairing table lists the recommended food items for those wines. Return the style and price for all wines that have a pairing.
+SELECT style, price
+FROM wine_region
+WHERE id IN(
+	SELECT wine_id
+	FROM pairing
+)
+ORDER BY price, style
+LIMIT 5
+
+14. Extract the last two characters from the string sports.
+SELECT RIGHT('sports', 2) AS sports_extract;
+
+15. Count the number of times each artist_id appears in the tracks table.
+SELECT artist_id, COUNT(*) AS artist_count
+FROM tracks
+GROUP BY artist_id
+ORDER BY artist_count DESC, artist_id
+LIMIT 5;
+
+16. The wine table gives information about wines stocked in an online wine retailer. Calculate the average rating of wines by type, return the data ordered by the average rating, from lowest to highest.
+SELECT type, ROUND(AVG(rating), 2)
+FROM wine
+GROUP BY type
+ORDER BY AVG(rating)
+
+17. The wine table gives information about wines from an online retailer. Use a common table expression to determine the highest count of bottles amongst all types.
+WITH type_count AS (
+	SELECT type, count(id) AS bottle_count
+	FROM wine
+	GROUP BY type
+)
+SELECT max(bottle_count) 
+FROM type_count
+
+18. Determine the average number of employees per manager using the employees table.
+SELECT AVG(count_employees)
+FROM (SELECT manager_id,
+            Count(employee_id) AS count_employees
+           FROM employees
+           GROUP BY manager_id) AS employee_summary
+
+19. Combine the words 'TV' and 'show' without spaces.
+SELECT ('TV', 'show') AS new_word;
+
+20. Due to a database error, the column followers of the artists was incorrectly increased by 1000. Correct the mistake by subtracting 1000 from the followers column.
+
+21. For each vendor_name in the vendors table, ensure that only the first letter of each word is upper case e.g. DATACAMP would become Datacamp.
+
