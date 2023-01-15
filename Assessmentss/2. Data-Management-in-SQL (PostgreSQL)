@@ -26,7 +26,6 @@ year	title	budget
 1929	Sunny Side Up	$600,000.00
 
 
-
 2.
 Statement:
 To calculate the average price for each category from the fruit_2022 table, ensure that the calculation only includes the prices using kg as the unit.
@@ -53,8 +52,6 @@ fruit	1.2386075949367089
 vegetable	1.3434090909090909
 
 
-
-
 3.
 Statement:
 From the vendors table, return the vendors in SEATTLE or AUSTIN city.
@@ -78,8 +75,6 @@ INREACH ONLINE CLE	AUSTIN	TX
 AMAZON CAPITAL SERVICES, INC.	SEATTLE	WA
 SPEAKWRITE LLC	AUSTIN	TX
 AMZN MKTP US	SEATTLE	WA
-
-
 
 
 4.
@@ -108,8 +103,6 @@ coxs_orange_group	11-MAR-2022	1.22
 egremont_russet	11-MAR-2022	1.14
 
 
-
-
 5.
 Statement:
 From the movie_budget table, return the year with more than 3 movies in the table.
@@ -134,8 +127,6 @@ year	n_of_movies
 1933	4
 
 
-
-
 6.
 Statement:
 From the bike_stations table, convert the Station_ID column to INTEGER data type.
@@ -158,8 +149,6 @@ station_id	latitude	longitude
 3045	34.028511	-118.25667
 3046	34.05302	-118.247948
 3055	34.044159	-118.251579
-
-
 
 
 7.
@@ -192,8 +181,6 @@ year	number_of_speakers
 2016	1
 
 
-
-
 8.
 Statement:
 Based only on the preview shown, which column has missing values in the speaker table?
@@ -210,8 +197,6 @@ The model column
 The price column ✔️
 The launch column
 The overall column
-
-
 
 
 9.
@@ -235,8 +220,6 @@ vendor_name	zip_code
 CHONZIE INC	28803
 VAUGHN & MELTON CONSULTING ENGINEERS,INC.	28806
 TEG LEASE FEE	33907
-
-
 
 
 10.
@@ -267,4 +250,151 @@ pak_choi	3.3880000000000000
 rhubarb	4.9107692307692308
 
 
+11.
+Add the rows from the movie_2010 table to movie_2000 but keep the duplicates.
 
+-- movie_2000
+| year    | title                    | budget       |
+|---------|--------------------------|--------------|
+|   2000  |   Mission: Impossible 2  |   125000000  |
+|   2004  |   Shrek 2                |   150000000  |
+|   2008  |   The Dark Knight        |   185000000  |
+|   2010  |   Toy Story 3            |   200000000  |
+-- movie_2010
+|   year  |   title                            |   budget       |
+|---------|------------------------------------|----------------|
+|   2010  |   Toy Story 3                      |   200000000    |
+|   2014  |   Transformers: Age of Extinction  |   210000000    |
+|   2015  |   Star Wars: The Force Awakens     |   245000000    |
+|   2016  |   Captain America: Civil War       |   250000000    |
+
+Solution:
+SELECT *
+FROM movie_2000
+UNION ALL 
+SELECT *
+FROM movie_2010
+ORDER BY year;
+
+Expected Output:
+year	title	budget
+2000	Mission: Impossible 2	125000000
+2004	Shrek 2	150000000
+2008	The Dark Knight	185000000
+2010	Toy Story 3	200000000
+2010	Toy Story 3	200000000
+2014	Transformers: Age of Extinction	210000000
+2015	Star Wars: The Force Awakens	245000000
+2016	Captain America: Civil War	250000000
+
+
+12.
+Add the rows from the movie_2010 table to movie_2000 but remove the duplicates.
+
+-- movie_2000
+| year    | title                    | budget       |
+|---------|--------------------------|--------------|
+|   2000  |   Mission: Impossible 2  |   125000000  |
+|   2004  |   Shrek 2                |   150000000  |
+|   2008  |   The Dark Knight        |   185000000  |
+|   2010  |   Toy Story 3            |   200000000  |
+-- movie_2010
+|   year  |   title                            |   budget       |
+|---------|------------------------------------|----------------|
+|   2010  |   Toy Story 3                      |   200000000    |
+|   2014  |   Transformers: Age of Extinction  |   210000000    |
+|   2015  |   Star Wars: The Force Awakens     |   245000000    |
+|   2016  |   Captain America: Civil War       |   250000000    |
+
+Solution:
+SELECT *
+FROM movie_2000
+UNION 
+SELECT *
+FROM movie_2010
+ORDER BY year;
+
+Expected Output:
+year	title	budget
+2000	Mission: Impossible 2	125000000
+2004	Shrek 2	150000000
+2008	The Dark Knight	185000000
+2010	Toy Story 3	200000000
+2014	Transformers: Age of Extinction	210000000
+2015	Star Wars: The Force Awakens	245000000
+2016	Captain America: Civil War	250000000
+
+
+13.
+Statement:
+For the vendors table, return the number of the rows without missing values in the vendor_state column.
+
+-- vendors
+|   vendor_name       |   vendor_city  |   vendor_state  |
+|---------------------|----------------|-----------------|
+|   CHONZIE INC       |   ASHEVILLE    |   NC            |
+| ...                 | ...            | ...             |
+|   WEBSEDGE LIMITED  |   LONDON       |                 |
+| ...                 | ...            | ...             |
+
+Solution:
+SELECT COUNT(*) 
+FROM vendors
+WHERE  vendor_state IS NOT NULL ;
+
+Expected Output:
+count
+286
+
+
+14.
+Statement:
+Join the bike_trips table with bike but keep all the records from bike_trips no matter whether they have a match in bike.
+
+-- bike_trips
+| trip_ID | duration | bikeID |
+|---------|----------|---------|
+|     364 | 60       | 5000    |
+|     365 | 900      | 2300    |
+|     366 | 720      | 5002    |
+-- bike
+| bike_ID | last_date_in_use | color |
+|---------|------------------|-------|
+|    2300 |      2020-04-15  | blue  |
+|    2350 |      2020-04-15  | green |
+|    3000 |      2020-04-18  | green |
+
+Solution:
+SELECT Trip_ID, Duration, bikeID, last_date_in_use, color 
+FROM bike_trips AS t
+LEFT JOIN bike AS b
+ON t.bikeID = b.bike_ID;
+
+Expected Output
+trip_id	duration	bikeid	last_date_in_use	color
+365	900	2300	2020-04-15	blue
+364	60	5000		
+366	720	5002
+
+
+15.
+Statement:
+From the movie_budget table, return the movie title which only includes four letters. e.g. the movie Bean has four letters.
+
+-- movie_budget
+|   year  |   title                  |   budget         |
+|---------|--------------------------|------------------|
+|   1915  |   The Birth of a Nation  |   $110,000.00    |
+|   1916  |   Intolerance            |   $489,653.00    |
+| ...     | ...                      | ...              |
+|   1925  |   Ben-Hur                |   $3,967,000.00  |
+| ...     | ...                      | ...              |
+
+Solution:
+SELECT *
+FROM movie_budget
+WHERE title LIKE '____';
+
+Expected Output:
+year	title	budget
+1975	Jaws	$9,000,000.00
