@@ -1,0 +1,270 @@
+1.
+Statement:
+From the movie_budget table, return the first five rows where the title doesn't contain the character a only in lowercase.
+-- movie_budget
+|   Year  |   Title                  |   Budget       |
+|---------|--------------------------|----------------|
+|   1915  |   The Birth of a Nation  |   $110,000.00  |
+|   1916  |   Intolerance            |   $489,653.00  |
+|   1917  |   Cleopatra              |   $300,000.00  |
+|   1918  |   Mickey                 |   $250,000.00  |
+|   1919  |   The Miracle Man        |   $120,000.00  |
+| ...     | ...                      | ...            |
+
+Solution:
+SELECT *
+FROM movie_budget
+WHERE title NOT LIKE '%a%'
+LIMIT 5;
+
+Output:
+year	title	budget
+1918	Mickey	$250,000.00
+1925	Ben-Hur	$3,967,000.00
+1927	Wings	$2,000,000.00
+1928	The Singing Fool	$388,000.00
+1929	Sunny Side Up	$600,000.00
+
+
+
+2.
+Statement:
+To calculate the average price for each category from the fruit_2022 table, ensure that the calculation only includes the prices using kg as the unit.
+
+--fruit_2022
+|   category   |   variety            |   price  |   unit  |
+|--------------|----------------------|----------|---------|
+|   fruit      |   bramleys_seedling  |   2.05   |   kg    |
+|   fruit      |   coxs_orange_group  |   1.22   |   kg    |
+| ...          | ...                  | ...      | ...     |
+|   vegetable  |      savoy           |   0.51   |   head  |
+| ...          | ...                  | ...      | ..      |
+
+Solution:
+SELECT category, 
+       AVG(price) AS avg_price
+FROM fruit_2022
+WHERE unit = 'kg'
+GROUP BY category;
+
+Expected Output
+category	avg_price
+fruit	1.2386075949367089
+vegetable	1.3434090909090909
+
+
+
+
+3.
+Statement:
+From the vendors table, return the vendors in SEATTLE or AUSTIN city.
+
+--vendors
+|   vendor_name             |   vendor_city     |   vendor_state  |
+|---------------------------|-------------------|-----------------|
+|   CHONZIE INC             |   ASHEVILLE       |   NC            |
+|   INREACH ONLINE CLE      |   AUSTIN          |   TX            |
+|   HENDERSONVILLE JEEP CH  |   HENDERSONVILLE  |   NC            |
+|   ....................... |   ............... |   ..      
+
+Solution:
+SELECT vendor_name,vendor_city,vendor_state
+FROM vendors
+WHERE vendor_city IN ('SEATTLE','AUSTIN');
+
+Expected Output
+vendor_name	vendor_city	vendor_state
+INREACH ONLINE CLE	AUSTIN	TX
+AMAZON CAPITAL SERVICES, INC.	SEATTLE	WA
+SPEAKWRITE LLC	AUSTIN	TX
+AMZN MKTP US	SEATTLE	WA
+
+
+
+
+4.
+Statement:
+From the fruit_2022 table, return the rows with the top 3 highest prices.
+
+-- fruit_2022
+|   variety            |   date      |   price  |
+|----------------------|-------------|----------|
+|   bramleys_seedling  | 11-MAR-2022 |   2.05   |
+|   coxs_orange_group  | 11-MAR-2022 |   1.22   |
+|   egremont_russet    | 11-MAR-2022 |   1.14   |
+|   braeburn           | 11-MAR-2022 |   1.05   |
+|   gala               | 11-MAR-2022 |   1.03   |
+
+Solution:
+SELECT variety,date,price
+FROM fruit_2022
+ORDER BY price DESC
+LIMIT 3;
+
+Expected Output:
+variety	date	price
+bramleys_seedling	11-MAR-2022	2.05
+coxs_orange_group	11-MAR-2022	1.22
+egremont_russet	11-MAR-2022	1.14
+
+
+
+
+5.
+Statement:
+From the movie_budget table, return the year with more than 3 movies in the table.
+
+-- movie_budget
+|   year  |   title                  |   budget         |
+|---------|--------------------------|------------------|
+|   1915  |   The Birth of a Nation  |   $110,000.00    |
+|   1916  |   Intolerance            |   $489,653.00    |
+| ...     | ...                      | ...              |
+|   1925  |   Ben-Hur                |   $3,967,000.00  |
+| ...     | ...                      | ...              |
+
+Solution:
+SELECT year, COUNT(*) AS n_of_movies
+FROM movie_budget
+GROUP BY year
+HAVING COUNT(*) > 3;
+
+Expected Output:
+year	n_of_movies
+1933	4
+
+
+
+
+6.
+Statement:
+From the bike_stations table, convert the Station_ID column to INTEGER data type.
+
+-- bike_stations
+|   Station_ID  |   Latitude   |   Longitude    |
+|---------------|--------------|----------------|
+|   3045.0      |   34.028511  |   -118.25667   |
+|   3046.0      |   34.05302   |   -118.247948  |
+|   3055.0      |   34.044159  |   -118.251579  |
+
+Solution:
+SELECT Station_ID :: INT,
+       Latitude,
+       Longitude
+FROM bike_stations;
+
+Expected Output:
+station_id	latitude	longitude
+3045	34.028511	-118.25667
+3046	34.05302	-118.247948
+3055	34.044159	-118.251579
+
+
+
+
+7.
+Statement:
+From the speaker table, return the number of speakers per year in descending order.
+
+-- speaker
+|   model                             |   price  |   launch      |
+|-------------------------------------|----------|---------------|
+|   Bowers & Wilkins Formation Wedge  |   899    |   2019-06-01  |
+|   Harman Kardon Citation 200        |   349    |   2020-09-01  |
+|   Sonos Five                        |   499    |   2021-06-01  |
+| ...                                 | ...      | ...           |
+
+Solution:
+SELECT  EXTRACT(year FROM launch) AS year,
+        COUNT(*) AS number_of_speakers
+FROM speaker
+GROUP BY year
+ORDER BY number_of_speakers DESC;
+
+Expected Output:
+year	number_of_speakers
+2020	15
+2021	12
+2019	7
+2018	6
+2017	3
+2022	1
+2016	1
+
+
+
+
+8.
+Statement:
+Based only on the preview shown, which column has missing values in the speaker table?
+
+-- speaker
+|   model                             | price |  launch     |  overall  |
+|-------------------------------------|-------|-------------|-----------|
+|   Bowers & Wilkins Formation Wedge  |  899  |  2019-06-01 |   160     |
+|   Harman Kardon Citation 200        |  349  |  ''         |   147     |
+|   Sonos Five                        |       |  2021-06-01 |    0      |
+
+Solution:
+The model column
+The price column ✔️
+The launch column
+The overall column
+
+
+
+
+9.
+Statement:
+In the vendors table, some entries in the zip_code have 9 digits. Return a zip_code column that only contains the first 5 digits from the zip_code column.
+
+-- vendors
+| vendor_name                               | zip_code   |
+|-------------------------------------------|------------|
+| CHONZIE INC                               | 28803      |
+| VAUGHN & MELTON CONSULTING ENGINEERS,INC. | 28806-1721 |
+| TEG LEASE FEE                             | 339073835  |
+
+Solution:
+SELECT vendor_name, 
+      LEFT(zip_code,5) AS zip_code
+FROM vendors;
+
+Expected Output:
+vendor_name	zip_code
+CHONZIE INC	28803
+VAUGHN & MELTON CONSULTING ENGINEERS,INC.	28806
+TEG LEASE FEE	33907
+
+
+
+
+10.
+Statement:
+From the fruit_2022 table, you want to know which item in the vegetable category has an average price higher than 2.
+
+--fruit_2022
+|   category   |   item      |   variety            |   price  |
+|--------------|-------------|----------------------|----------|
+|   fruit      |   apples    |   bramleys_seedling  |   2.05   |
+|   fruit      |   apples    |   coxs_orange_group  |   1.22   |
+| ...          | ...         | ...                  | ...      |
+|   vegetable  |   beetroot  |   beetroot           |   0.52   |
+| ...          | ...         | ...                  | ..       |
+
+Solution:
+SELECT item,
+       AVG(price) AS avg_price
+FROM fruit_2022
+WHERE category = 'vegetable' ✔️
+GROUP BY item
+HAVING AVG(price) > 2;
+
+Expected Output:
+item	avg_price
+curly_kale	3.2700000000000000
+pak_choi	3.3880000000000000
+rhubarb	4.9107692307692308
+
+
+
