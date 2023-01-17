@@ -1,20 +1,20 @@
-1. You are a financial advisor preparing for a client review meeting. Your report tracks your client's account performance over the last year. Which visualization would be most appropriate for this data?
+##### 1. You are a financial advisor preparing for a client review meeting. Your report tracks your client's account performance over the last year. Which visualization would be most appropriate for this data?
 Scatter
 Histogram
 Line chart
 -Pie chart
 
-2. A credit analyst would like to visualise the 25th, 50th, and 75th percentile credit scores for each credit product offered at the company. Which data visualization would be most appropriate to show this information?
+##### 2. A credit analyst would like to visualise the 25th, 50th, and 75th percentile credit scores for each credit product offered at the company. Which data visualization would be most appropriate to show this information?
 Bar
 scatter
 box
 heatmap
 
-3. According to the following Scatter plot, what could we say about the relationship between Number of absences and School performance?
+##### 3. According to the following Scatter plot, what could we say about the relationship between Number of absences and School performance?
 Strong negative correlation
 
-4. You are given a data set which includes a small number of very high values. Which visualization would best show these values as outliers?
+##### 4. You are given a data set which includes a small number of very high values. Which visualization would best show these values as outliers?
 Box, line, bar
 
-5. If you wish to visualize the correlation between two variables, which of the following charts will give you the best information about it?
+##### 5. If you wish to visualize the correlation between two variables, which of the following charts will give you the best information about it?
 Scatter, line, histogram, pie
