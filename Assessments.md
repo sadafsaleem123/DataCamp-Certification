@@ -1,4 +1,138 @@
-#DATA-ANALYSIS-IN-SQL
+# STATISTICAL EXPERIMENTATION THEORY
+
+1. You are a Data Scientist on a Marketing team. The team is analyzing whether changing the color of their campaign from red to green will increase click-through rates. What is an appropriate null hypothesis for this experiment?
+
+- [x] There is no significant color between red and green color click-through rates 
+- [x] There is significant color between red and green color click-through rates 
+- [ ] Red will perform significantly better than green on click-through rates conversion
+- [ ] Green will perform significantly better than red on click-through rates conversion
+
+2. You conducted a telephone survey on an election candidate and after analyzing your data concluded that there is a 95% chance that she would capture between 26.5% and 33.5% of the vote given the margin of error of 3.5%. What can you say about the remaining 5% chance?
+
+- [x] There is 2.5% chance that she will capture less than 26.5% and a 2.5% chance more than 33.5%
+- [ ] there is 5% chance that a residual 5% voters will vote for the other candidate
+- [ ] the distribution will have a standard devaition of 5% given the 95% confidence interval
+- [ ] Given the confidence interval of 95%, there is a 5% chance that she will get 0 votes
+
+3. As a credit risk analyst, you are conducting a test for a new customer scoring method using machine learning instead of traditional methods. You hypothesize that this new scoring metric will reduce losses at a 95% confidence level. You monitor this new scoring method using a 95% confidence level and have arrived at a p-value of 0.04. What can you say about the null hypothesis in this scenario?
+- [ ] This is not enough statistical evidence to reject the null hypothesis
+- [ ] the p-value is too small to be able to reject the null hypothesis
+- [ ] the null hypothesis is not applicable and does not apply to this scenario
+- [x] This is enough statistical evidence to reject the null hypothesis
+
+4. You are a Data Scientist on a Marketing team. The team is analyzing whether changing the color of their campaign will increase or decrease click-through rates. What kind of hypothesis do you propose to solve the team's question?
+- [ ] Null hypothesis test
+- [x] Alternative hypothesis test
+- [ ] Two-tailed hypothesis test
+- [ ] One-tailed hypothesis test
+
+5. You want to test the regrowth of hair in people who eat spinach on a daily basis vs. people who don't. You conduct an experiment and find that eating spinach daily has no effect on hair regrowth. What can you say about the null hypothesis?
+
+- [ ] It can be rejected because spinach had no effect on hair regrowth
+- [x] It cannot be rejected because hair regrowth was the same between the groups
+- [ ]  It cannot be rejected because people who don't eat spanish had less hair loss
+- [ ]  It can be rejected because eating spinach and hair loss are not correlated
+
+6. Which test can show if a value is greater than another?
+
+- [ ] Two-tailed
+- [ ] Type I test
+- [x] One-tailed
+- [ ] Type II test
+
+7. Which hypothesis testing method is best to use when two samples are not considered independent?
+- [ ] Conjoint
+- [ ] blocked
+- [x] paired
+- [ ] proportion
+
+8. You conduct a survey to compare student study habits between two countries. Canada's data has a standard deviation of 10 and Mexico's has a standard deviation of 6. How can you describe the confidence interval for the Canadian students' study habits vs Mexican students'?
+- [ ] Skewed
+- [ ] Longer
+- [x] Wider
+- [ ] Narrower
+
+9. You design an experiment to test engagement with a new product. The users exposed to the existing version of the product are called what?
+- [x] control group
+- [ ] historical group
+- [ ] validation group
+
+10. To measure the impact of a stimulus you divide you sample into two groups. What are these groups called?
+- [ ] Test and validation
+- [x] Test and control
+- [ ] Test and training
+- [ ] Test and treatment
+
+11. As an analyst for a mutual fund, you would like to conduct an analysis to prove that your fund has performed 10% better than its benchmark last year. This example uses which type of hypothesis test?
+- [ ] Uni-tailed test
+- [ ] multi-tailed test
+- [x] one-tailed test
+- [ ] two-tailed test
+
+12. You are using software to split web traffic between a test experience and control experience for a website. What is the name of the method used to avoid sampling bias?
+- [ ] variation
+- [ ] blocking
+- [x] randomization
+
+13. When testing the differences between two groups, groups A and B, in statistical experimentation, the null hypothesis proposes that:
+- [ ] There is a significant difference between groups A and B
+- [x] There is not a significant difference between groups A and B
+- [ ] The difference in group A is larger than group B
+- [ ] The difference in group B is larger than group A
+
+14. How is a t-distribution different than a normal distribution?
+- [ ] T-distributions are only used when the mean is greater than zero
+- [x] A t-distributions has heavier tails and tends to have values farther from the mean
+- [ ] A t-distribution is same as the normal distribution and has no difference in shape
+- [ ] The standard deviation of a t-distribution is >1 while a normal distribution is < 1
+
+15. Confidence intervals are commonly used in Statistics to help statistician understand their estimates. Which of the following statements below accurately describes a confidence interval?
+- [ ] An interval in which the population mean is guranteed going to be found in repeated experiments
+- [x] A range in which the true population mean is likely to be found with a certain probability.
+- [ ] An interval in which we expect the p-value to be exactly 0.05
+- [ ] A range in which we expect the p-value to fall into within a certain probability, given some observes data.
+
+16. You work at a pharmaceutical company and are testing a new drug to reduce hair loss. You separate the group into two sections: one you will give the new drug and the other you will give a sugar pill. Which one did the control group receive?
+- [ ] neither 
+- [x] sugar pill
+- [ ] new drug
+
+17. What is the purpose of randomly assigning participants to control and test groups within experimental designs?
+- [x] Randomaization helps to reduce bias in statistical research
+- [ ] Randomization ensures that researchers can perform a t-test
+- [ ] Randomization reduces variability across three or more studies
+
+18. Suppose an analyst at your shoe company tells you that she ran a statistical test on expected sneaker sales. The test suggests customers will buy an average of 3 sneakers per person this year, with a margin of error of 1 sneaker. How do you explain to your stakeholder the results of this statistical finding?
+- [x] We are 95% confident that the true population value lies between 2 and 4
+- [ ] we are 5% confident that true sneaker sales will be exactly 3
+- [ ] we are 5% confident that the true population value lies between 2 and 4
+- [ ]  we are 95% confident that true sneaker sales will be exactly 3
+
+19. As a Data Scientist in a Marketing team, you are asked to analyze the effect of changing the color of your campaign from red to green on the number of clicks the campaign receives. Which of the following represents the independent variable in this scenario?
+- [ ] The campaign itself
+- [ ] the number of clicks the campaign recieves
+- [x] The color of the campaign
+- [ ] The ddesign of the research
+
+20. As a Data Scientist in a Marketing team, you are asked to analyze the effect of changing the color of your campaign from red to green on the number of clicks the campaign receives. Which of the following represents the dependent variable in this scenario?
+- [ ] The campaign itself
+- [x] the number of clicks the campaign recieves
+- [ ] The color of the campaign
+- [ ] The ddesign of the research
+
+21. Which continuous probability distribution is characterized by being unimodal, symmetric, asymptotic to the x axis, with an equal mode, mean, and median?
+- [x] Normal
+- [ ] Uniform
+- [ ] Exponential
+
+22. As a Data Scientist at ABC corp., you are asked to explain to the Marketing Manager what a 95% confidence interval is. How should you describe a 95% confidence interval to the manager?
+- [ ] If we run an experiment once, we can be 95% certain that the resulting value is accurate
+- [x] In repeated experiments, we expect our test results to match results from the population 95% of the time.
+- [ ] If we run an experiment twice, we expect our test results to be accurate within 95% of the previous experiment
+- [ ] In repeated experiments, we can expect our test results to give the exact same number 95% of the time
+
+
+# DATA-ANALYSIS-IN-SQL
 
 #### 1. From the movie_budget table, return the first five rows where the title doesn't contain the character a only in lowercase.
 
