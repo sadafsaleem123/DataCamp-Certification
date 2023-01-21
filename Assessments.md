@@ -202,6 +202,226 @@ print(food.sort_index(level = 'item', ascending = False))
 |chicken salad|     110   |  5.00|      |    8.00|
 
 
+#### 16.  
+```
+sns.scatterplot(x = "age", y = "value", size = "mpg", data = valuation)
+```
+Output: It creates single graph scatter plot having different sizes 
+
+#### 17. Set the column name as an index of the Pandas game DataFrame shown below
+```
+game = game.set_index('name')
+print(game)
+```
+#### 18. Consider the Pandas DataFrames restaurant and location below, respectively. Combine their columns into a single DataFrame.
+```
+df = pd.concat([restaurant, location], axis = 1)
+```
+#### 19. To drop duplicates
+```
+wine_no_duplicates= wine.drop_duplicates()
+``` 
+
+#### 20. To reset index 
+```
+game = game.reset_index()
+```
+
+#### 21. 
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.scatterplot(x = "age", y = "value", hue = "emissions", data = valuation)
+plt.show()
+```
+
+#### 22. For descending order
+```
+print(food.sort_index(level = 'item', ascending = False))
+```
+
+#### 23. Adding new column
+```
+df['language'] = ['python', 'R', 'R', 'python']
+print(df)
+```
+#### 24. To set index
+```
+chess = chess.set_index('Fide id')
+print(chess.head())
+```
+#### 25. Your manager wants a list of the first names of all of her employees. Help her out by printing the index of the employee DataFrame shown below.
+```
+print(employee.index)
+```
+#### 26. The three columns in the stars DataFrame currently have very cumbersome names (Temperature (K), Luminosity(L/Lo), Radius(R/Ro)). Rename them using the provided list column_names.
+
+```
+import pandas as pd
+column_names = [
+  'temperature',
+  'luminosity',
+  'radius'
+]
+stars.columns = column_names
+print(stars.head())
+```
+#### 27. 
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.lineplot(x = 'day', y = 'order', data=df)
+plt.xticks(rotation = 45)
+plt.show()
+```
+
+#### 28. The chess DataFrame contains information about the top female chess players around the world. Determine what fields exist in the dataset by printing the names of the columns.
+
+```
+print(chess.columns)
+```
+#### 29. Stats function 
+```
+from scipy import stats
+iqr_age = stats.iqr(age)
+print(iqr_age)
+```
+#### 30. 
+```
+import pandas as pd
+print(pd.DataFrame({
+    "x": [1], 
+    "y": [3],
+}))
+```
+Expected Output
+  x  y
+0  1  3
+
+#### 31. Consider the Pandas DataFrame df below. Remove the column named "repo".
+
+```
+print(df.drop(columns="repo"))
+```
+
+Mean of values
+
+#### 32. Consider df below.
+  x   y
+0  4  16
+1  9  25
+
+```
+print(df.apply(np.sqrt))
+```
+
+#### Expected Output
+    x    y
+0  2.0  4.0
+1  3.0  5.0
+
+#### 33. You have been given the food data to analyse, it's already loaded for you and stored in a DataFrame. Before you get started you want to quickly see some summary statistics for each of the three columns in the data. Calculate and print these statistics.
+
+```
+print(food.describe())
+```
+#### 34. The food DataFrame contains nutritional information about six menu items from a restaurant. Print the row index of the data.
+
+```
+print(food.index)
+```
+
+#### 35. You are investigating the impact of age on the valuation of cars to better understand prices that should be offered to customers for second hand cars. You want to visualize both the individual distributions as well as the relationship between the two variables on a single graphic.
+
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.jointplot(x = 'age', y = 'value', data = valuation)
+plt.show()
+```
+
+#### 36. Return the Pandas DataFrame df shown below with the smallest salary value appearing first in the data frame.
+
+```
+result = df.sort_values('salary', ascending = True)
+print(result)
+```
+
+#### 37. Subset the Pandas DataFrame df to return all rows with a weight greater than 175.
+
+```
+print(df[df['weight'] > 175])
+```
+
+#### 38. From the wine DataFrame, select the columns country and price.
+```
+subset_wine = wine[['country', 'price']]
+print(subset_wine.head())
+```
+
+#### 39. Consider the Pandas DataFrame df below. Filter it appropriately so that it outputs the shown results.
+```
+print(df[df["stars"]==1450])
+```
+
+#### 40. The wine DataFrame, whose first few rows are shown below, provides information on wine stocked by an online retailer, but is missing the year of the vintage. Add the year column to the data. The list of years has been created for you.
+
+```
+year = [2018, 2018, 2017, 2016, 2017, 2016, 2018, 2016, 2016]
+wine['year'] = year 
+print(wine.head())
+```
+
+#### 41. Consider the Pandas DataFrame df below.
+
+```
+print(df.iloc[0:2])
+```
+The chess dataset contains information about the top female chess players around the world. Remove the redundant Gender column from the dataset.
+
+```
+chess.drop(columns="Gender", inplace=True)
+print(chess.dtypes)
+```
+
+#### 42. You work for a second hand car sales company, and they want to know the relationship between the age and the value so that they can estimate the best price to sell their cars at. Create a plot to show the relationship, identifying the miles per gallon (mpg) by changing the size of each point. The valuation data is previewed below.
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.scatterplot(x = "age", y = "value", size = "mpg", data = valuation)
+plt.show()
+```
+#### 43. Create a pair plot of the song_metrics dataset.
+
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.pairplot(song_metrics)
+plt.show()
+```
+
+
+#### 44. Plot a boxplot of the pH variable in the wine DataFrame.
+
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+ax = sns.boxplot(wine['pH'])
+plt.show()
+```
+
+#### 45. Add a legend to the distribution plot of avocado prices.
+
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+ax = sns.histplot(avocado.AveragePrice)
+ax.axvline(x=1.75, label="Break Even", linestyle='--')
+ax.legend()
+plt.show()
+```
+
+
 # STATISTICAL EXPERIMENTATION THEORY
 
 1. You are a Data Scientist on a Marketing team. The team is analyzing whether changing the color of their campaign from red to green will increase click-through rates. What is an appropriate null hypothesis for this experiment?
