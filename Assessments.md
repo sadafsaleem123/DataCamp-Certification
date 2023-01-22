@@ -91,10 +91,9 @@ print(df.head())
 
 #### 6. The wine DataFrame, whose first few rows are shown below, provides information on wine stocked by an online retailer, but is missing the year of the vintage. Add the year column to the data. The list of years has been created for you.
 
-|----------------|type      |country   |price     |rating|
+|-|type      |country   |price     |rating|
 |----------------|----------|----------|--------|---------|
-|style           |----------|----------|---------|------|  
-|----------------|----------|----------|--------|---------|
+|style           |-|-|-|-|  
 |alvarinho       |    white |  portugal|  18.99 |    4.2|
 |blanc de blanc  |sparkling |    france |   NaN|     3.8|
 |cabernet              |red|  argentina|  14.90|     4.0|
@@ -104,9 +103,9 @@ wine['year'] = year
 print(wine.head())
 ```
 #### Expected Output
- |------------ |type   | country | price | rating | year|
-|style         |  ----|--------| --------|-----|----|
-|-------------|--------|---------|--------|------|----|
+ |- |type   | country | price | rating | year|
+ |-------------|--------|---------|--------|------|----|
+|style         |-|-|-|-|-|
 |alvarinho          | white  | portugal  |18.99  |   4.2 | 2018|
 |blanc de blanc  |sparkling  |   france |   NaN   |  3.8 | 2018|
 |cabernet        |      red  |argentina | 14.90   |  4.0 | 2017|
@@ -185,8 +184,8 @@ Mean: 3.1 Median: 3.0
 
 #### 15. Return the food DataFrame, previewed below, sorted by the index value item in descending order.
 
-|-------|energy  |protein  |carbohydrate|
-|item | ---------|--------- |-----------| 
+|-|energy  |protein  |carbohydrate|
+|item | -|-|-| 
 |----|------|----|---|
 |waffles   |        200  |   4.29    |     35.71|
 |tacos             |180    |10.94        | 23.44|
