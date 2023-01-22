@@ -91,7 +91,8 @@ print(df.head())
 
 #### 6. The wine DataFrame, whose first few rows are shown below, provides information on wine stocked by an online retailer, but is missing the year of the vintage. Add the year column to the data. The list of years has been created for you.
 
-|----------------|     type|    country|  price  |rating|
+|----------------|type      |country   |price     |rating|
+|----------------|----------|----------|--------|---------|
 |style           |----------|----------|---------|------|  
 |----------------|----------|----------|--------|---------|
 |alvarinho       |    white |  portugal|  18.99 |    4.2|
