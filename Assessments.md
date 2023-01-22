@@ -1,5 +1,5 @@
 # DATA MANIPULATION WITH PYTHON
-1. Consider the Pandas DataFrame df below. Filter it appropriately so that it outputs the shown results.
+#### 1. Consider the Pandas DataFrame df below. Filter it appropriately so that it outputs the shown results.
 
 | |gh owner| language|      repo|  stars|
 |-|--------|---------|----------|-------|
@@ -12,12 +12,13 @@
 ```
 
 #### Expected output
-       repo gh owner language  stars
-3  plotnine   has2k1   python   1450
+| -|    repo| gh owner| language  |stars|
+|--|-------|----------|-----------|-----|
+|3 | plotnine|   has2k1|   python   |1450|
 
 #### 2. Consider df below.
 
-|.  | x |  y|
+|--| x |  y|
 |--|---|---|
 |0 | 4 | 16|
 |1 | 9 | 25|
@@ -27,13 +28,13 @@ print(df.apply(np.sqrt))
 ```
 
 #### Expected Output
-|. |   x|    y|
+|- |   x|    y|
 |--|----|-----|
 |0 | 2.0 | 4.0|
 |1  |3.0  5.0|
 
 #### 3. Consider the Pandas DataFrame df below.
-|.|     gh owner| language |     repo | stars|
+|-|     gh owner| language |     repo | stars|
 |-----|-------|-----------|---------|-------|
 |0 | pandas-dev |  python  |  pandas|  17800|
 |1 |  tidyverse |       R  |   dplyr |  2800|
@@ -43,7 +44,7 @@ print(df.apply(np.sqrt))
 print(df.loc[:,["gh owner"]])
 ```
 #### Expected Output
-|.    | gh owner|
+|--  | gh owner|
 |-----|---------|
 |0 | pandas-dev|
 |1 |  tidyverse|
@@ -56,11 +57,12 @@ import pandas as pd
 df = pd.read_csv(iris_csv)
 print(df.tail())
 ```
-#### Expected Output|
-|    SepalLength|  SepalWidth|  PetalLength|  PetalWidth  |          Name
-|16    |      7.1     |    3.0   |       5.9     |    2.1 | Iris-virginica
+#### Expected Output
+|    SepalLength|  SepalWidth|  PetalLength|  PetalWidth  |          Name|
+|---------------|------------|-------------|--------------|---------------|
+|16    |      7.1     |    3.0   |       5.9     |    2.1 | Iris-virginica|
 |17    |      6.3     |    2.9   |       5.6      |   1.8 | Iris-virginica|
-|18    |      6.5     |    3.0   |       5.8     |    2.2 | Iris-virginica
+|18    |      6.5     |    3.0   |       5.8     |    2.2 | Iris-virginica|
 |19    |      7.6     |    3.0   |       6.6      |   2.1|  Iris-virginica|
 |20    |      4.9     |    2.5   |       4.5      |   1.7|  Iris-virginica|
 
