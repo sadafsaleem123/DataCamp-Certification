@@ -1891,7 +1891,7 @@ Regression intercept: [-1.77635684e-15]
  - [ ] Linear regression
  - [ ] Decision trees
  - [ ] Logistics regression
- - [ ] K-means clustering
+ - [x] K-means clustering
 
 #### 22. Are small or large residuals desired?
 - [x] Residuals refer to the error values of a model and therefore smaller residuals are desirable
