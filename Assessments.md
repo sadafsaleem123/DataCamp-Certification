@@ -430,6 +430,210 @@ ax.legend()
 plt.show()
 ```
 
+# STATISTICAL FUNDAMENTALS WITH PYTHON
+
+#### 1. You want to compare the distribution of the arrival delays for two different airlines. In particular you want to see features of the data, so you have decided to create a boxplot. A sample of the arrivals data is shown below.
+
+|  |   airline|   delay|
+|--|----------|--------|
+|0 |      A   |  20|
+|1 |      B   |  63|
+|2 |      B   |  28|
+|3 |      B   |  25|
+|4 |      A   |  20|
+
+```diff
+import matplotlib.pyplot as plt
+import seaborn as sns
++ sns.boxplot(x= 'airline', y = 'delay' , data = arrivals ) 
+plt.show()
+```
+
+#### Expected output
+
+![131](https://user-images.githubusercontent.com/61821924/213913016-46a9d450-cee6-4d27-a5f7-f80cae4e6e12.svg)
+
+
+#### 2. Create a pair plot of the song_metrics dataset.
+```diff
+import matplotlib.pyplot as plt
+import seaborn as sns
++ sns.pairplot(data = song_metrics)
+plt.show()
+```
+#### Expected Output
+
+![132](https://user-images.githubusercontent.com/61821924/213913036-17da53c4-568b-4a1d-9ad2-f86564f64e04.svg)
+
+
+#### 3. You have access to a lap_times DataFrame that contains the lap times for three different Formula 1 drivers across a number of races. The driver ids are stored in the column driverId, and the respective times are contained in the column seconds. Use a boxplot to compare the lap times of the different drivers.
+```diff
+import matplotlib.pyplot as plt
+import seaborn as sns
+ax = sns.boxplot(
++  	x = 'driverId', 
++  	y = 'seconds', 
++  	data=lap_times
+	)
+plt.show()
+```
+Expected Output
+
+![133](https://user-images.githubusercontent.com/61821924/213913098-3ed1c684-7d26-42e0-b2a0-158e96339047.svg)
+
+#### 4. Draw a sample of 20,000 numbers from a standard normal distribution. The random seed has been set for you.
+```diff
+import numpy as np
+from scipy.stats import norm
++ sample = np.random.standard_normal(20000)
+print(sample)
+```
+Expected Output
+[ 0.49671415 -0.1382643   0.64768854 ...  0.37835397  1.71352973 -1.6199198 ]
+
+#### 5. You have just arrived at a casino, and have decided to try out the roulette wheel. You know that the odds of winning any single number are approximately 3%, and yet you still decide to put your money on the number 21 for 10 separate spins. Generate a sample of the 10 fresh spins of the wheel. The random seed has been set for you.
+```diff
+import numpy as np
++ sample = np.random.choice(["Win", "Lose"], 10, p=(0.03, 0.97))
+print(sample)
+```
+Expected Output
+['Lose' 'Lose' 'Lose' 'Win' 'Lose' 'Lose' 'Lose' 'Lose' 'Lose' 'Lose']
+
+#### 6. Consider the histogram of a data sample. Fit an empirical cumulative distribution function (ECDF) and calculate the cumulative probability of 40. The data sample is available in an array named x.
+
+![134](https://user-images.githubusercontent.com/61821924/213913192-74f43598-7275-44b8-b228-e0eb20d4df32.png)
+```diff
++ from statsmodels.distributions.empirical_distribution import ECDF
++ ecdf = ECDF(x)
+print(ecdf(40))
+```
+Expected Output
+0.645
+
+#### 7. Using the DataFrame movies shown below, create a violin plot to compare the duration of movies by genre.
+
+|   | genre| duration|
+|---|------|---------|
+|1 |Dramas  |     93|
+|2 |Horror |      78|
+|3 |Action |      80|
+|4 |Dramas |     123|
+|5 |Horror |      95|
+|6 | Dramas|      119|
+```diff
+import matplotlib.pyplot as plt
+import seaborn as sns
++ sns.violinplot(x='duration', y='genre', data=movies)
+plt.show()
+```
+Expected Output
+
+![135](https://user-images.githubusercontent.com/61821924/213913263-060e9e75-e826-46a2-bc2f-230c3df3d4a3.svg)
+
+#### 8. For each of the next 50 visitors to your website you want to randomly assign them to either group A or B so that they see different versions of the page. There should be an even probability of being in each group. The random seed has been set for you.
+```diff
+import numpy as np
+groups= ['A', 'B']
++ assignment= np.random.choice(groups, 50)
+print(assignment)
+```
+Expected Output
+['B' 'A' 'B' 'B' 'A' 'A' 'A' 'B' 'A' 'B' 'A' 'B' 'B' 'B' 'B' 'A' 'A' 'B'
+ 'B' 'A' 'B' 'A' 'A' 'B' 'A' 'A' 'A' 'B' 'B' 'B' 'A' 'A' 'A' 'A' 'A' 'A'
+ 'B' 'A' 'B' 'B' 'B' 'A' 'A' 'A' 'B' 'A' 'B' 'B' 'A' 'A']
+
+#### 9. The results data contains the exam Score for a number of students. Create a boxplot of the values for the Score.
+
+|   |    Score| Class |
+|---|---------|-------|
+|1  |     5.4 |    A  |
+|2  |   13.0  |    B  |
+|3  |     2.0 |    B  |
+|4  |     1.4 |    A  |
+|5  |    14.4 |    B  |
+|6  |     3.3 |    B  |
+```diff
+import matplotlib.pyplot as plt
+import seaborn as sns
++ sns.boxplot(x = "Score", data = results)
+plt.show()
+```
+Expected Output
+
+![136](https://user-images.githubusercontent.com/61821924/213913444-2209de4c-d6f3-4849-bb9e-f7f46e726305.svg)
+
+#### 10. An eccentric chocolate factory owner has decided to conceal a limited number of special prizes, hidden under the wrapper, in his latest batch of chocolate bars. Perform a simulation of you purchasing three separate chocolate bars from a local store, sampling from the list chocolate. The random seed has been set for you.
+```diff
+import numpy as np
++ purchases = np.random.choice(chocolate, 3, replace=False)
+print(purchases)
+```
+Expected Output
+['Lose' 'Lose' 'Lose']
+
+#### 11. You have conducted an experiment on your website and have measured the time spent on your site by two groups, group_a and group_b. Perform a suitable statistical test to test the hypothesis that the mean time on the site is different for the two groups.
+```diff
+from scipy import stats
++ test= stats.ttest_ind(group_a, group_b)
+print(test.pvalue.round(3))
+```
+Expected Output
+0.056
+
+#### 12. Sample 100 values from a Poisson distribution, with a mean of 10. The random seed has been set for you.
+```diff
+import numpy as np
++ samples = np.random.poisson(10, 100)
+print(samples)
+```
+Expected Output
+[ 4  7 12 11 10  7 12 12 11 11  6 11 11  9  7  5 12 14 12 14 12  9 12 15
+  7 16 17  7 13  9 11  5 15  9 14 18  3 22  7 14  9 10 10  7 14  9 16 10
+  8  5  5 16 11 12 10 14  9  9 14 10  9  8  9  8  7  6 12 13  9  6 14  4
+  7 12 16 12 12  9 12  9 10 12 17 16  8  5  5  8 11 11 11  7  8 11  8  4
+  9  6 14  8]
+
+#### 13. Draw a random sample from the professions data set. The random seed has been set for you.
+```diff
+import numpy as np
+professions = ["doctor", 
+               "nurse", 
+               "product manager", 
+               "marketing analyst", 
+               "programmer"]
++ sample = np.random.choice(professions)
+print(sample)
+```
+Expected Output
+marketing analyst
+
+#### 14. Ensure that results of your research, that involves simulation, are reproducible. The seed value has been provided in the object seed.
+```diff
+import numpy as np
+seed = 121120
++ np.random.seed(seed)
+print(np.random.poisson(5, 50))
+```
+Expected Output
+[ 2  7  4  7  3  8  5  3 10  6  6  7  5  6  9  2  6  2  5  5  7  6  5  1
+  8  3  6  5  2  4  3  3  3  5  9  4  8  4  4  5  3 10  4  7  3  3  7  1
+  3  5]
+
+#### 15. Create an array of 100 numbers sampled from a Poisson distribution were the observed interval is equal to 5. The random seed has been set for you.
+```diff
+import numpy as np
+from scipy.stats import poisson
++ sample = np.random.poisson(5, 100)
+print(sample)
+```
+Expected Output
+[ 5  4  4  5  5  3  5  4  6  7  2  5  5  6  4  6  6  1  7  2 11  4  3  8
+  3  3  5  8  3  2  5  3  8 10  3  2  5  7  6  6  2  4  9  7 11  8  3  2
+  3  4  5  5  4  3  8  2  1  4  5  4  3  4  8  2  2  2  7  6  7  6  7  6
+  4  2  3  4  7  4  3  2  6  3  5  9  6  6  9  4  9  2 10  6  9  4  1  6
+  8  6  2  3]
+
 
 # STATISTICAL EXPERIMENTATION THEORY
 
