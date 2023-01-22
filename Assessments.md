@@ -1,3 +1,4 @@
+## Topic-1
 # DATA MANIPULATION WITH PYTHON
 #### 1. Consider the Pandas DataFrame df below. Filter it appropriately so that it outputs the shown results.
 
@@ -430,6 +431,7 @@ ax.legend()
 plt.show()
 ```
 
+## Topic-2
 # STATISTICAL FUNDAMENTALS WITH PYTHON
 
 #### 1. You want to compare the distribution of the arrival delays for two different airlines. In particular you want to see features of the data, so you have decided to create a boxplot. A sample of the arrivals data is shown below.
@@ -634,7 +636,7 @@ Expected Output
   4  2  3  4  7  4  3  2  6  3  5  9  6  6  9  4  9  2 10  6  9  4  1  6
   8  6  2  3]
 
-
+## Topic-3
 # STATISTICAL EXPERIMENTATION THEORY
 
 1. You are a Data Scientist on a Marketing team. The team is analyzing whether changing the color of their campaign from red to green will increase click-through rates. What is an appropriate null hypothesis for this experiment?
@@ -768,8 +770,8 @@ Expected Output
 - [ ] If we run an experiment twice, we expect our test results to be accurate within 95% of the previous experiment
 - [ ] In repeated experiments, we can expect our test results to give the exact same number 95% of the time
 
-
-# DATA-ANALYSIS-IN-SQL
+##Topic-4
+# DATA ANALYSIS IN SQL
 
 #### 1. From the movie_budget table, return the first five rows where the title doesn't contain the character a only in lowercase.
 
@@ -1205,9 +1207,7 @@ user_id	title_lower
 
 #### 21. For each vendor_name in the vendors table, ensure that only the first letter of each word is upper case e.g. DATACAMP would become Datacamp.
 
-
-
-
+## Topic-5
 # DATA-MANAGEMENT-IN-POSTGRESQL
 
 #### 1. From the movie_budget table, return the first five rows where the title doesn't contain the character a only in lowercase.
@@ -1448,11 +1448,11 @@ TEG LEASE FEE	33907
 | ...          | ...         | ...                  | ..       |
 
 Solution:
-```
+```diff
 SELECT item,
        AVG(price) AS avg_price
 FROM fruit_2022
-WHERE category = 'vegetable' ✔️
++ WHERE category = 'vegetable'
 GROUP BY item
 HAVING AVG(price) > 2;
 ```
@@ -1614,3 +1614,362 @@ WHERE title LIKE '____';
 Expected Output:
 year	title	budget
 1975	Jaws	$9,000,000.00
+
+
+## Topic-6
+# MACHINE LEARNING FUNDAMENTALS IN PYTHON
+
+#### 1. x_train and y_train are explanatory and response variables, respectively, used to fit a linear model, stored in the variable reg. Use reg to predict the value of the response variable y_test as a function of the explanatory variable x_test.
+
+```diff
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression()
+reg.fit(x_train, y_train)
+- predictions = reg.predict(X_test)
++ predictions = reg.predict(x_test)
+print(predictions)
+```
+
+#### Expected Output
+[[22.]
+ [24.]
+ [26.]
+ [28.]
+ [30.]
+ [32.]
+ [34.]
+ [36.]
+ [38.]
+ [40.]
+ [42.]]
+ 
+ #### 2. The following is a preview of the data df. One-hot encode the Animal variable.
+
+|  |Age |  Animal | Weight|
+|--|----|---------|-------|
+|0 |  22|  dog    |   68.7|
+|1 |  38|  cat    |   89.8|
+|2 |  56|  cat    |   77.4|
+|3 |  21|  dog    |   77.3| 
+|4 |  43|  fish   |   82.8|
+
+```
+import pandas as pd
+encoded = pd.get_dummies(df, columns=['Animal'])
+print(encoded)
+```
+
+Expected Output
+|   | Age|  Weight  |  Animal_cat | Animal_dog | Animal_fish|
+|---|----|----------|-------------|------------|------------|
+|0  | 22 |   68.7   |        0    |       1      |      0|
+|1  | 38 |   89.8   |        1    |       0      |      0|
+|2  | 56 |   77.4   |        1    |       0      |      0|
+|3  | 21 |   77.3   |        0    |       1      |      0|
+|4  | 43 |   82.8   |        0    |       0      |      1|
+
+#### 3. Fit a Logistic Regression model to the binary data.
+
+|x  | y  |
+|---|----|
+|0  |  0|
+|1  |  1|
+|2  |  0|
+|3  |  0|
+|...|...|
+
+```
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(random_state=1)
+model.fit(x, y)
+print(model.score(x, y))
+```
+
+## 4.  Calculate the mean of the array x, whose distribution is shown in the plot.
+
+![137](https://user-images.githubusercontent.com/61821924/213921151-61761dd4-c1cb-4a12-90aa-ed547ab000d5.png)
+```
+import numpy as np
+result = np.mean(x)
+print(result)
+```
+
+#### Expected Output
+0.01933205582232549
+ 
+#### 5. Available in this session are the training (X_train, y_train) and test (X_test, y_test) sets. Fit a classification random forest model and then use the model to make predictions using the test data.
+
+```diff
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+model = RandomForestClassifier(n_estimators=300, max_depth=1, random_state=1)
+model.fit(X_train, y_train)
+- y_pred = model.predict(x_TEST)
++ y_pred = model.predict(X_test)
+print(accuracy_score(y_test, y_pred))
+```
+
+Expected Output
+0.9333333333333333 
+ 
+#### 6. Available in your working session is the dataset scaled_samples. Instantiate a principal component analysis model object with 2 components, and fit the model to the scaled_samples object.
+```
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+pca.fit(scaled_samples)
+pca_features = pca.transform(scaled_samples)
+print(pca_features.shape)
+```
+
+#### Expected Output
+(85, 2)
+ 
+#### 7. You have created a k-means clustering model customer_model. The model groups customers into 5 classes. You now receive new data describing a set of 5 customers (X_new). Determine to which clusters they belong.
+``` 
+predictions = customer_model.predict(X_new)
+print(predictions)
+```
+#### Expected Output
+[1 3 4 4 3]
+ 
+#### 8. A LogisticRegression model is fitted on the training data X_train and y_train, and stored in model. Use model and the X_test feature data to predict values for the response variable, and store it in y_pred. Then get the model score using X_test and y_test.
+```
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(random_state=1)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+score = model.score(X_test, y_test)
+print(score)
+```
+#### Expected Output
+0.9517543859649122 
+ 
+ #### 9. Available in this session are the training data X_train and y_train for feature and target variables, respectively; as well as the testing data X_test and y_test for feature and target variables, respectively. Using sklearn, fit a classification decision tree model on X_train and y_train.
+```
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+model = DecisionTreeClassifier(max_depth=4, random_state=1)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+print(accuracy_score(y_test, y_pred))
+```
+#### Expected Output
+0.9833333333333333
+ 
+#### 10. A dataset has been prepared for you and split into test and training sets (X_train, X_test, y_train, y_test). Show the importance of each feature in the gradient boosting model that is fitted to the data
+```diff
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(random_state=42)
+model.fit(X_train, y_train)
++ importances = model.feature_importances_
++ feature_importances  = pd.Series(importances, wine_feat.columns)
+print(feature_importances)
+```
+#### Expected Output
+Alcohol       0.392
+Malic.acid    0.266
+Ash           0.110
+Acl           0.231
+dtype: float64 
+
+#### 11. Using the original data, df, training (X_train, y_train) and test (X_test, y_test) sets have been created. Complete the code using the data sets in the appropriate places.
+```diff
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+lin_reg = LinearRegression()
++ lin_reg.fit(X_train,y_train)
++ predictions = lin_reg.predict(X_test)
++ print("Mean squared error: %.2f" % mean_squared_error(y_test, predictions))
+```
+#### Expected Output
+Mean squared error: 8.47
+
+#### 12. You are supplied with continuous variables in the NumPy arrays X and y. Build an appropriate model on the target array y using the features of X. Display the coefficient and intercept for the resulting model.
+```diff
++ from sklearn.linear_model import LinearRegression
++ model = LinearRegression()
+model.fit(X,y)
++ print("Regression coefficients: {}".format(model.coef_))
++ print("Regression intercept: {}".format(model.intercept_))
+```
+#### Expected Output
+Regression coefficients: [[1.33333333]]
+Regression intercept: [-1.0658141e-14]
+
+#### 13. Determine if 50, 150 or 250 is the best value for the n_estimators hyperparameter of a random forest classifier.
+```
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+model_params = {'n_estimators': [50, 150, 250]}
+rf = RandomForestClassifier(random_state=42)
+clf = GridSearchCV(rf, model_params, cv=5)
+clf.fit(X_train, y_train)
+print(clf.best_params_)
+```
+#### Expected Output
+{'n_estimators': 150}
+
+#### 14. Which of the following metrics would not be used when assessing the performance of a classification model?
+- [ ] Area under the curve
+- [ ] Precision
+- [ ] Recall
+- [x] Median absolute error
+
+#### 15. You are supplied with a dataset assigned to the variable scaled_data. This dataset exhibits high dimensionality, you need to reduce it to 3 features.
+```
+from sklearn.decomposition import PCA
+reducing_fn = PCA(n_components=3)
+reducing_fn.fit(scaled_data)
+reduced_ft = reducing_fn.transform(scaled_data)
+print(reduced_ft.shape)
+```
+#### Expected Output
+(85, 3)
+
+#### 16. The scatterplot shows data for a sample of 14 biofuels. Fit a linear regression model and print the intercept and coefficient. x = iodine value (g), y = cetane number
+
+![138](https://user-images.githubusercontent.com/61821924/213922409-03005484-06a6-45db-913f-b7348b911a73.png)
+```
+from sklearn.linear_model import LinearRegression
+model = LinearRegression(fit_intercept=True)
+model.fit(x, y)
+print("Regression coefficients: {}".format(model.coef_))
+print("Regression intercept: {}".format(model.intercept_))
+```
+#### Expected Output
+Regression coefficients: [[-0.20938742]]
+Regression intercept: [75.21243193]
+
+#### 17. A LogisticRegression model is fitted on the training data X_train and y_train, and stored in model. Use model and the X_test feature data to predict values for the response variable, and store it in y_pred. Then get the model score using X_test and y_test.
+```
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(random_state=1)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+score = model.score(X_test, y_test)
+print(score)
+```
+#### Expected Output
+0.9517543859649122
+
+#### 18. The Pandas DataFrame df is loaded on your working session. Using the scipy package, implement k-means clustering (with two centroids) on the columns x_scaled and y_scaled.
+```
+from scipy.cluster.vq import kmeans, vq
++ clusters = kmeans(
+	df[['x_scaled', 'y_scaled']],
+	2
+)
+print(clusters)
+```
+#### Expected Output
+(array([[2.64462017, 2.17073744],
+       [0.66058434, 0.15108795]]), 0.20140463751291524)
+
+#### 19. x and y are Numpy arrays available in this session. Use them to fit a linear model, stored in the reg variable.
+```
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression()
+reg.fit(x, y)
+print("Regression coefficients: {}".format(reg.coef_))
+print("Regression intercept: {}".format(reg.intercept_))
+```
+#### Expected Output
+Regression coefficients: [[2.]]
+Regression intercept: [-1.77635684e-15]
+
+#### 20. Overfitting means:
+- [ ] We have built a model that will only perform well on previously unseen data.
+- [x] We have built a model that will only perform well on the training data.
+- [ ] We have spent a lot of the time building a model with no significant improvement
+- [ ] We have built a model that will give reasonable results on any data.
+
+#### 21. A medical researcher is looking to group species of bacteria based on their responsiveness to different antibiotics. What model should he use on his data?
+ - [ ] Linear regression
+ - [ ] Decision trees
+ - [ ] Logistics regression
+ - [ ] K-means clustering
+
+#### 22. Are small or large residuals desired?
+- [x] Residuals refer to the error values of a model and therefore smaller residuals are desirable
+- [ ] Residuals refer to the error values of a model and therefore larger residuals are desirable
+- [ ] Residuals refer to the error values of a model and therefore constant residuals are desirable
+- [ ] The overall goal will determine whether small or large residuals are desired.
+
+#### 23. A series of predicted values, y_pred, have been calculated from the fitted model, lin_reg. The data has been split into training and test sets. Choose the appropriate metric to assess the predictive performance.
+```
+from sklearn.linear_model import LinearRegression
+from sklearn import metrics
+lin_reg = LinearRegression()
+lin_reg.fit(X_train,y_train)
+y_pred = lin_reg.predict(X_test)
+score = metrics.mean_squared_error(y_test, y_pred)
+print(score)
+```
+
+#### Expected Output
+8.474832262021076
+
+#### 24. Calculate the mean of the array x, whose distribution is shown in the plot.
+
+![139](https://user-images.githubusercontent.com/61821924/213922689-27d06940-7161-438e-874e-1550c3488ec2.png)
+```
+import numpy as np
+result = np.mean(x)
+print(result)
+```
+
+#### Expected Output
+0.01933205582232549
+
+#### 25. Which of the following best describes a decision tree?
+- [ ] An algorithm that reduces the number of variables to a set of principal variables.
+- [x] An algorithm with a sequence of if-else questions about the individual features used to infer the target variable
+- [ ] An algorithm that describes a continuous response variable as a function of one or more predictor variables
+- [ ] An algorithm that splits unlabled data into groups based on feature simalarities
+
+#### 26. Available in this session are the training data X_train and y_train for feature and target variables, respectively; as well as the testing data X_test and y_test for feature and target variables, respectively. Using sklearn, fit a classification decision tree model on X_train and y_train.
+```
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+model = DecisionTreeClassifier(max_depth=4, random_state=1)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+print(accuracy_score(y_test, y_pred))
+```
+#### Expected Output
+0.9833333333333333
+
+#### 27. A simple linear regression model is fitted to data of a company's advertising budget and their sales. What is the relationship between a company's advertising budget and their sales as described by the regression model output below?
+
+Regression coefficients: [[0.1]]
+Regression intercept: [7]
+Regression score: 0.9
+
+- [ ] If the company increases their advertising budget by $1000, then there will be no change in sales.
+- [ ] If the company increases their advertising budget by $1000, their sales will most likely decrease by $100.
+- [x] If the company increases their advertising budget by $1000, their sales will most likely increase by $100.
+- [ ] If the company increases their advertising budget by $1000, their sales will most likely increase by $70.
+
+#### 28. Before we fit a model to our data we should consider centering and scaling the data so that:
+
+- [ ] It's easier to interpret the model output because the variables are the same values
+- [x] A feature does not have more influence on the model because of larger or smaller values
+- [ ] We can remove outliers from the data because they will all be on the same range
+- [ ] We can use both the original and scaled version of the variables in our model
+
+#### 29. Which one of the following statements describes an unsupervised learning problem?
+
+- [ ] A machine learning where we predict a caregorical variable as a function of both continuous and categorical variables
+- [x] A machine learning where we seek to understand whether observations fit into distinct groups based on their similarities
+- [ ] A machine learning problem where we fit a model a response variable as a function of a set of predictor variables
+- [ ] A machine learning problems that deals with the importing and cleaning of a dataset, such that it is tidy
+
+#### 30. Which of the following best describes linear regression?
+- [ ] An algorithm that reduces the number of variables for data-modeling to a set of so-called principal variables
+- [x] An algorithm that describes a continuous response variable as a funtion of one or more predictor variables
+- [ ] An algorithm that describe a factor response variable as a function of one or more predictor variable
+- [ ] An algorithm that splots data into groups based on feature similarities. 
