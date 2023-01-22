@@ -17,7 +17,7 @@
 
 #### 2. Consider df below.
 
-|  | x |  y|
+|.  | x |  y|
 |--|---|---|
 |0 | 4 | 16|
 |1 | 9 | 25|
@@ -27,26 +27,28 @@ print(df.apply(np.sqrt))
 ```
 
 #### Expected Output
-     x    y
-0  2.0  4.0
-1  3.0  5.0
+|. |   x|    y|
+|--|----|-----|
+|0 | 2.0 | 4.0|
+|1  |3.0  5.0|
 
 #### 3. Consider the Pandas DataFrame df below.
-
-     gh owner language      repo  stars
-0  pandas-dev   python    pandas  17800
-1   tidyverse        R     dplyr   2800
-2   tidyverse        R   ggplot2   3500
-3      has2k1   python  plotnine   1450
+|.|     gh owner| language |     repo | stars|
+|-----|-------|-----------|---------|-------|
+|0 | pandas-dev |  python  |  pandas|  17800|
+|1 |  tidyverse |       R  |   dplyr |  2800|
+|2  | tidyverse |       R  | ggplot2 |  3500|
+|3  |    has2k1  | python | plotnine |  1450|
 ```
 print(df.loc[:,["gh owner"]])
 ```
 #### Expected Output
-     gh owner
-0  pandas-dev
-1   tidyverse
-2   tidyverse
-3      has2k1 
+|.    | gh owner|
+|-----|---------|
+|0 | pandas-dev|
+|1 |  tidyverse|
+|2 |  tidyverse|
+|3 |     has2k1 |
 
 4. Consider the Pandas DataFrame df. Explore its last five rows.
 ```
@@ -54,21 +56,22 @@ import pandas as pd
 df = pd.read_csv(iris_csv)
 print(df.tail())
 ```
-#### Expected Output
-    SepalLength  SepalWidth  PetalLength  PetalWidth            Name
-16          7.1         3.0          5.9         2.1  Iris-virginica
-17          6.3         2.9          5.6         1.8  Iris-virginica
-18          6.5         3.0          5.8         2.2  Iris-virginica
-19          7.6         3.0          6.6         2.1  Iris-virginica
-20          4.9         2.5          4.5         1.7  Iris-virginica
+#### Expected Output|
+|    SepalLength|  SepalWidth|  PetalLength|  PetalWidth  |          Name
+|16    |      7.1     |    3.0   |       5.9     |    2.1 | Iris-virginica
+|17    |      6.3     |    2.9   |       5.6      |   1.8 | Iris-virginica|
+|18    |      6.5     |    3.0   |       5.8     |    2.2 | Iris-virginica
+|19    |      7.6     |    3.0   |       6.6      |   2.1|  Iris-virginica|
+|20    |      4.9     |    2.5   |       4.5      |   1.7|  Iris-virginica|
 
 #### 5. Add the height column to the df DataFrame shown below.
 
-     species    name  weight 
-0       lion   Sally     121
-1      tiger   Henry     228
-2       lion    Tony     177
-3      tiger    Lucy     165
+| ----  |species    |name  |weight |
+|-----|-----------|-------|------|
+|0      | lion   |Sally     |121|
+|1      |tiger   |Henry     |228|
+|2       |lion    |Tony     |177|
+|3      |tiger    |Lucy     |165|
 
 ```
 height = [70, 100, 80, 85]
@@ -76,8 +79,8 @@ df['height'] = height
 print(df.head())
 ```
 #### Expected Output
-| |  species|   name|  weight|  height|
-| |---------|-------|--------|--------|
+|-|  species|   name|  weight|  height|
+|-|---------|-------|--------|--------|
 |0|  lion|  Sally   |  121  |    70|
 |1| tiger|  Henry  |   228   |  100|
 |2|  lion |  Tony  |   177   |   80|
@@ -86,20 +89,21 @@ print(df.head())
 
 #### 6. The wine DataFrame, whose first few rows are shown below, provides information on wine stocked by an online retailer, but is missing the year of the vintage. Add the year column to the data. The list of years has been created for you.
 
-                     type    country  price  rating
-style                                               
-alvarinho           white   portugal  18.99     4.2
-blanc de blanc  sparkling     france    NaN     3.8
-cabernet              red  argentina  14.90     4.0
+|----------------|     type|    country|  price  |rating|
+|style           |----------|----------|---------|------|  
+|----------------|----------|----------|--------|---------|
+|alvarinho       |    white |  portugal|  18.99 |    4.2|
+|blanc de blanc  |sparkling |    france |   NaN|     3.8|
+|cabernet              |red|  argentina|  14.90|     4.0|
 ```
 year = [2018, 2018, 2017, 2016, 2017, 2016, 2018, 2016, 2016]
 wine['year'] = year
 print(wine.head())
 ```
 #### Expected Output
- |                    |type   | country | price | rating | year|
-|style                 |        |         |        |      |    |
-|----------------------|--------|---------|--------|------|----|
+ |------------ |type   | country | price | rating | year|
+|style         |  ----|--------| --------|-----|----|
+|-------------|--------|---------|--------|------|----|
 |alvarinho          | white  | portugal  |18.99  |   4.2 | 2018|
 |blanc de blanc  |sparkling  |   france |   NaN   |  3.8 | 2018|
 |cabernet        |      red  |argentina | 14.90   |  4.0 | 2017|
@@ -178,9 +182,9 @@ Mean: 3.1 Median: 3.0
 
 #### 15. Return the food DataFrame, previewed below, sorted by the index value item in descending order.
 
-|              | energy  |protein  |carbohydrate|
-|item | | |                                     | 
-|---|---|----|---|
+|-------|energy  |protein  |carbohydrate|
+|item | ---------|--------- |-----------| 
+|----|------|----|---|
 |waffles   |        200  |   4.29    |     35.71|
 |tacos             |180    |10.94        | 23.44|
 |tacos      |       180   | 10.94      |   23.44|
@@ -191,9 +195,9 @@ Mean: 3.1 Median: 3.0
 print(food.sort_index(level = 'item', ascending = False))
 ```
 #### Expected Output
-|              | energy  |protein  |carbohydrate|
-|item | | |                                     | 
-|---|---|----|---|
+|--------| energy  |protein  |carbohydrate|
+|item |-------------|------- |------------| 
+|---  |---|----|---|
 |waffles   |        200  |   4.29    |     35.71|
 |thai curry |       106   |  3.18      |   11.66|
 |tacos      |       180   | 10.94      |   23.44|
@@ -295,8 +299,9 @@ print(pd.DataFrame({
 }))
 ```
 Expected Output
-  x  y
-0  1  3
+|---|x  |y|
+|---|--|--|
+|0  |1 | 3|
 
 #### 31. Consider the Pandas DataFrame df below. Remove the column named "repo".
 
@@ -307,18 +312,20 @@ print(df.drop(columns="repo"))
 Mean of values
 
 #### 32. Consider df below.
-  x   y
-0  4  16
-1  9  25
+|- |x  | y|
+|--|---|---|
+|0  |4|  16|
+|1  |9 | 25|
 
 ```
 print(df.apply(np.sqrt))
 ```
 
 #### Expected Output
-    x    y
-0  2.0  4.0
-1  3.0  5.0
+|---| x|    y |
+|---|--|-------|
+|0  |2.0|  4.0|
+|1  |3.0|  5.0|
 
 #### 33. You have been given the food data to analyse, it's already loaded for you and stored in a DataFrame. Before you get started you want to quickly see some summary statistics for each of the three columns in the data. Calculate and print these statistics.
 
