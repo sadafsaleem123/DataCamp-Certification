@@ -1,2 +1,3 @@
 # DataCamp-Certification
- Professional Data Analyst 
+ The exam for Data Analytics and Data Science
+ 
