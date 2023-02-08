@@ -70,3 +70,28 @@ import pandas as pd
 
 
 # 7.
+```
+import statsmodels.api as sm
+```
+
+
+# 8.
+```
+from sklearn import linear_model
+```
+
+
+# 9.
+```
+import statsmodels.formula.api as smf
+```
+
+
+# 10.
+```
+import requests
+url = 'https://jsonplaceholder.typicode.com/posts/1'
+response = requests.get(url)
+data = response. json()
+print(data)
+```
